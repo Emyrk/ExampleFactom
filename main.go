@@ -67,6 +67,7 @@ func main() {
 	// Lets add it back in
 	// First set the chainID to the chain we want to put it into
 	firstEntry.ChainID = chain.ChainID
+	firstEntry.Content = []byte("Goodbye World")
 	_, err = factom.CommitEntry(firstEntry, ec)
 	if err != nil {
 		panic(err)
