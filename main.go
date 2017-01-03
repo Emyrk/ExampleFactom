@@ -55,8 +55,30 @@ func main() {
 	}
 	fmt.Println("Chain reveal successful:", eHash)
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(1 * time.Second)
 	ent, err := factom.GetEntry(eHash)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Got it back!")
+	fmt.Println(ent.String())
+
+	// Lets add it back in
+	// First set the chainID to the chain we want to put it into
+	firstEntry.ChainID = chain.ChainID
+	_, err = factom.CommitEntry(firstEntry, ec)
+	if err != nil {
+		panic(err)
+	}
+
+	eHash, err = factom.RevealEntry(firstEntry)
+	if err != nil {
+		panic(err)
+	}
+
+	time.Sleep(1 * time.Second)
+	ent, err = factom.GetEntry(eHash)
 	if err != nil {
 		panic(err)
 	}
