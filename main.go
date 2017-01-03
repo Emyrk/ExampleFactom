@@ -48,7 +48,6 @@ func main() {
 	}
 	fmt.Println("Chain commit successful:", cCom)
 
-	//time.Sleep(10 * time.Second)
 	// Reveal an Chain
 	eHash, err := factom.RevealChain(chain)
 	if err != nil {
