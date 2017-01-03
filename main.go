@@ -38,6 +38,8 @@ func main() {
 	firstEntry := CreateEntry(exIds, message)
 	chain := factom.NewChain(firstEntry)
 
+	fmt.Println("ChainID:", chain.ChainID)
+
 	// Now we have the chain ready
 	// Commit an Chain
 	cCom, err := factom.CommitChain(chain, ec)
